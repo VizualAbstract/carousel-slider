@@ -15,37 +15,21 @@
  * @package     Stepzero_Slider
  * @copyright   Copyright (c) 2014 Stepzero. (http://www.stepzero.solutions)
  * @license     http://www.stepzero.solutions/magento/licenses/Stepzero_Slider
- */
- /**
- * you can add diferent sliders with slider tempate files
  *
- *
+ * Installation... place the following string:
+ * {{block type="slider/slider" slider_id="1" slider_name="generic-carousel" template="stepzero/slider/slider.phtml" name="slider" as="slider" }}
+ * ...in your CMS page
  */
-?>
-<!-- carousel-slider -->
-<pre>
-<?php
-	// $sliderID = $this->getData('slider_id');
-	//  $sliderName = $this->getData('slider_name');
-	// <h3><?php echo $sliderID . " / " . $sliderName;
-	//
 ?>
 <?php
-// if ($sliderID = $this->getData('slider_id')){
-// 	$slidercontent = $this->getLoadedSliderImages($sliderID,'primary-slider' );
-// } else {
-// 	$slidercontent = $this->getLoadedSliderImages('1','carousel-generic' );
-// }
-	$slidercontent = $this->getLoadedSliderImages(1, 'carousel-generic' );
-	print_r($slidercontent);
+	$sliderID = $this->getData('slider_id');
+	$sliderName = $this->getData('slider_name');
+	$slidercontent = $this->getLoadedSliderImages( $sliderID, $sliderName );
 ?>
-<?php $this->getLoadedSliderImages(); ?>
-storeID: <?php echo Mage::app()->getStore()->getId(); ?><br />
-</pre>
 <?php if( !empty( $slidercontent ) ){?>
-	<section class="carousel-slider hidden-xs">
+	<section class="carousel-slider">
 		<div id="carousel-generic" class="carousel slide" data-ride="carousel">
-			<?php echo $slidercontent?>
+			<?php echo $slidercontent; ?>
 		</div>
 	</section>
 <?php } ?>
