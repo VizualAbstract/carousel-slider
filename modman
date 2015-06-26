@@ -1,0 +1,13 @@
+app/code/local/Stepzero     																					app/code/local/Stepzero
+
+app/design/adminhtml/default/default/layout/slider.xml								app/design/adminhtml/default/default/layout/slider.xml
+
+app/design/adminhtml/default/default/template/slider 									app/design/adminhtml/default/default/template/slider
+
+app/design/frontend/base/default/layout/slider.xml 										app/design/frontend/base/default/layout/slider.xml
+
+app/design/frontend/base/default/template/stepzero 										app/design/frontend/base/default/template/stepzero
+
+app/etc/modules/Stepzero_Slider.xml 																	app/etc/modules/Stepzero_Slider.xml
+
+skin/frontend/base/default/js/szero-slider.js													skin/frontend/base/default/js/szero-slider.js
