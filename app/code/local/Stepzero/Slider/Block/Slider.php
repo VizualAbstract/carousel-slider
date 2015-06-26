@@ -62,7 +62,7 @@ class Stepzero_Slider_Block_Slider extends Mage_Core_Block_Template
 
     }
 
-	public function getLoadedSliderImages( $slideridentifier, $cid='generic_slider' ){
+	public function getLoadedSliderImages( $slideridentifier=1, $cid='generic_slider' ){
 		$storeid = Mage::app()->getStore()->getId();
 		$collection = Mage::getModel('slider/slider')->getCollection()
 						->addFieldToSelect( array( 'slider_id', 'slider_width', 'slider_height', 'slider_duration' ) )

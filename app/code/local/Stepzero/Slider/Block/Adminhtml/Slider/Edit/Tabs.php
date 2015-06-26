@@ -33,7 +33,7 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit_Tabs extends Mage_Adminhtml_Bl
           'title'     => Mage::helper('slider')->__('Slider Item  Information'),
           'content'   => $this->getLayout()->createBlock('slider/adminhtml_slider_edit_tab_form')->toHtml(),
       ));
-	  
+
       $this->addTab('form_config', array(
           'label'     => Mage::helper('slider')->__('Slider Configuration'),
           'title'     => Mage::helper('slider')->__('Slider Configuration'),

@@ -29,7 +29,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Grid extends Mage_Adminhtml_Bl
   protected function _prepareCollection()
   {
 	  $collection = Mage::getModel('slider/slider_items')->getResourceCollection();
-	  
+
 	  foreach ($collection as $view) {
       	if ( $view->getStoreId() && $view->getStoreId() != 0 ) {
             $view->setStoreId(explode(',',$view->getStoreId()));
@@ -37,28 +37,28 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Grid extends Mage_Adminhtml_Bl
             $view->setStoreId(array('0'));
         }
 	  }
-		
-	  
+
+
       $this->setCollection($collection);
       return parent::_prepareCollection();
   }
 
   protected function _prepareColumns()
-  { 
+  {
       $this->addColumn('slideritem_id', array(
           'header'    => Mage::helper('slider')->__('ID'),
           'align'     =>'right',
           'width'     => '50px',
           'index'     => 'slideritem_id',
       ));
-	  
+
       $this->addColumn('slideritem_title', array(
           'header'    => Mage::helper('slider')->__('Title'),
           'align'     =>'left',
           'index'     => 'slideritem_title',
       ));
-	  
-  
+
+
       $this->addColumn('slideritem_description', array(
           'header'    => Mage::helper('slider')->__('Description'),
           'align'     =>'left',
@@ -70,7 +70,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Grid extends Mage_Adminhtml_Bl
           'align'     =>'left',
           'index'     => 'slider_url',
       ));
-	  
+
 
 		if ( !Mage::app()->isSingleStoreMode() ) {
 			$this->addColumn('store_id', array(
@@ -90,15 +90,15 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Grid extends Mage_Adminhtml_Bl
           'align'     =>'left',
           'index'     => 'slideritem_slider',
       ));
-	  
+
       $this->addColumn('slider_sort', array(
           'header'    => Mage::helper('slider')->__('Sort Order'),
           'align'     => 'left',
           'width'     => '90px',
           'index'     => 'slider_sort'
       ));
-	  
-	  
+
+
       $this->addColumn('status', array(
           'header'    => Mage::helper('slider')->__('Status'),
           'align'     => 'left',
@@ -110,7 +110,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Grid extends Mage_Adminhtml_Bl
               0 => 'Disabled',
           ),
       ));
-	  
+
 	  $this->addColumn('action',
 		  array(
 			  'header'    =>  Mage::helper('slider')->__('Action'),
@@ -127,7 +127,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Grid extends Mage_Adminhtml_Bl
 			  'filter'    => false,
 			  'sortable'  => false
 	  ));
-		
+
       return parent::_prepareColumns();
   }
 
@@ -170,8 +170,8 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Grid extends Mage_Adminhtml_Bl
 	  ));
 	  return $this;
   }
-	
-	
+
+
   public function getRowUrl($row)
   {
       return $this->getUrl('*/*/edit', array('id' => $row->getId()));

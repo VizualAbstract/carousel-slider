@@ -17,13 +17,13 @@
  */
 class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Image extends Mage_Adminhtml_Block_Widget_Form
 {
-	
+
     public function __construct()
     {
         $this->setTemplate('slider/image.phtml');
     }
-	
-	
+
+
     protected function _toHtml()
     {
         if( !Mage::registry('slideritems_data') ) {
@@ -31,15 +31,14 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Image extends Mage_Ad
             return parent::_toHtml();
         }
 
-		
 		$collection = Mage::getModel('slider/slider_items')->getCollection()
 						->addFieldToSelect( array( 'slider_image_path' ) )
 						->addFieldToFilter('slideritem_id', Mage::registry('slideritems_data')->getSlideritem_id() );
-		$imagedata = $collection->getData();
+        $imagedata = $collection->getData();
         $this->assign('sliderimage', $imagedata[0]);
         return parent::_toHtml();
     }
 
-  
-	
+
+
 }

@@ -29,17 +29,17 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit_Tab_Form extends Mage_Adminhtm
           'required'  => true,
           'name'      => 'slider_title',
       ));
-	  
-	  
+
+
       $fieldset->addField('slider_description', 'textarea', array(
           'label'     => Mage::helper('slider')->__('Description'),
           'class'     => 'required-entry',
           'required'  => true,
           'name'      => 'slider_description',
       ));
-	  
-		
-		
+
+
+
       $fieldset->addField('status', 'select', array(
           'label'     => Mage::helper('slider')->__('Status'),
           'name'      => 'status',
@@ -55,8 +55,8 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit_Tab_Form extends Mage_Adminhtm
               ),
           ),
       ));
-     
-     
+
+
       if ( Mage::getSingleton('adminhtml/session')->getSliderData() )
       {
           $form->setValues(Mage::getSingleton('adminhtml/session')->getSliderData());

@@ -26,12 +26,12 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit extends Mage_Adminhtml_Bl
     public function __construct()
     {
         parent::__construct();
- 
+
         $this->_objectId = 'id';
         $this->_blockGroup = 'slider';
         $this->_controller = 'adminhtml_slideritems';
 		$this->_mode = 'edit';
- 
+
         $this->_addButton('save_and_continue', array(
                   'label' => Mage::helper('adminhtml')->__('Save And Continue'),
                   'onclick' => 'saveAndContinueEdit()',
@@ -47,7 +47,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit extends Mage_Adminhtml_Bl
                     tinyMCE.execCommand('mceRemoveControl', false, 'edit_form');
                 }
             }
- 
+
             function saveAndContinueEdit(){
                 editForm.submit($('edit_form').action+'back/edit/');
            }

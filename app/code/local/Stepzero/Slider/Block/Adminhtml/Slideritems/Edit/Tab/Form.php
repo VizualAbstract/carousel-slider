@@ -22,8 +22,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
       $form = new Varien_Data_Form();
       $this->setForm($form);
       $fieldset = $form->addFieldset('web_form', array('legend'=>Mage::helper('slider')->__('Slider Item Information')));
- 
-	  
+
       $fieldset->addField('slideritem_title', 'text', array(
           'label'     => Mage::helper('slider')->__('Title'),
           'class'     => 'required-entry',
@@ -31,49 +30,47 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
           'name'      => 'slideritem_title',
       ));
 
-
-	  
       $fieldset->addField('slideritem_description', 'editor', array(
           'label'     => Mage::helper('slider')->__('Description'),
           'name'      => 'slideritem_description',
-		  'wysiwyg'   => true,
+          'wysiwyg'   => false,
       ));
-	  
+
       $fieldset->addField('slider_url', 'text', array(
           'label'     => Mage::helper('slider')->__('URL'),
           'name'      => 'slider_url',
       ));
-	  
+
       $fieldset->addField('slideritem_slider', 'select', array(
           'label'     => Mage::helper('slider')->__('Slider'),
           'name'      => 'slideritem_slider',
-		  'required'  => true,
+		      'required'  => true,
           'values'    => $this->getSlidertitleOptionsArray(),
       ));
-	  
+
       $fieldset->addField('filename', 'file', array(
           'label'     => Mage::helper('slider')->__('Slider Image'),
           'required'  => false,
           'name'      => 'filename',
-	  ));
-	  
-	//if (!Mage::app()->isSingleStoreMode()) {
-		$fieldset->addField('store_id', 'multiselect', array(
-			'name' => 'stores[]',
-			'label' => Mage::helper('slider')->__('Store View'),
-			'title' => Mage::helper('slider')->__('Store View'),
-			'required' => true,
-			'values' => Mage::getSingleton('adminhtml/system_store')
-						 ->getStoreValuesForForm(false, true),
-		));
-	//}else {
-		//$fieldset->addField('store_id', 'hidden', array(
-		//	'name' => 'stores[]',
-		//	'value' => Mage::app()->getStore(true)->getId()
-		//));
-	//}
+	    ));
 
-		
+    // if (!Mage::app()->isSingleStoreMode()) {
+      $fieldset->addField('store_id', 'multiselect', array(
+        'name' => 'stores[]',
+        'label' => Mage::helper('slider')->__('Store View'),
+        'title' => Mage::helper('slider')->__('Store View'),
+        'required' => true,
+        'values' => Mage::getSingleton('adminhtml/system_store')
+                ->getStoreValuesForForm(false, true),
+      ));
+    // } else {
+    //   $fieldset->addField('store_id', 'hidden', array(
+    //     'name' => 'stores[]',
+    //     'value' => Mage::app()->getStore(true)->getId()
+    //   ));
+    // }
+
+
       $fieldset->addField('status', 'select', array(
           'label'     => Mage::helper('slider')->__('Status'),
           'name'      => 'status',
@@ -89,14 +86,14 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
               ),
           ),
       ));
-     
- 	
+
+
       $fieldset->addField('slider_sort', 'text', array(
           'label'     => Mage::helper('slider')->__('Sort Order'),
           'name'      => 'slider_sort',
           'class' 		=> 'validate-digits',
       ));
-	
+
       if ( Mage::getSingleton('adminhtml/session')->getSliderData() )
       {
           $form->setValues(Mage::getSingleton('adminhtml/session')->getSliderData());
@@ -106,7 +103,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
       }
       return parent::_prepareForm();
   }
-  
+
     /**
      * Retrieve array (sliders => slider_name) of available sliders
      *
@@ -121,13 +118,13 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
         ));
         return $sliders;
     }
-	
+
     public function getSliderInstance()
     {
         return Mage::registry('current_slideritems');
     }
-	
-	
+
+
     /**
      * Retrieve option array of widget types
      *
@@ -148,6 +145,6 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
         }
         return $slidersArray;
     }
-	
-	
+
+
 }

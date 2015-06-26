@@ -23,12 +23,12 @@
  */
 ?>
 <!-- carousel-slider -->
-
+<pre>
 <?php
 	// $sliderID = $this->getData('slider_id');
 	//  $sliderName = $this->getData('slider_name');
 	// <h3><?php echo $sliderID . " / " . $sliderName;
-	//  echo Mage::app()->getStore()->getId();
+	//
 ?>
 <?php
 // if ($sliderID = $this->getData('slider_id')){
@@ -37,7 +37,11 @@
 // 	$slidercontent = $this->getLoadedSliderImages('1','carousel-generic' );
 // }
 	$slidercontent = $this->getLoadedSliderImages(1, 'carousel-generic' );
+	print_r($slidercontent);
 ?>
+<?php $this->getLoadedSliderImages(); ?>
+storeID: <?php echo Mage::app()->getStore()->getId(); ?><br />
+</pre>
 <?php if( !empty( $slidercontent ) ){?>
 	<section class="carousel-slider hidden-xs">
 		<div id="carousel-generic" class="carousel slide" data-ride="carousel">

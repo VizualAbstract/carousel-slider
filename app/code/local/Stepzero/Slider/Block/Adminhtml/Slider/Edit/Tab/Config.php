@@ -31,7 +31,7 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit_Tab_Config extends Mage_Adminh
           'maxlength' => '4',
           'size'      => '6',
       ));
-	  
+
       $fieldset->addField('slider_height', 'text', array(
           'label'     => Mage::helper('slider')->__('Slider Height'),
           'class'     => 'required-entry',
@@ -40,7 +40,7 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit_Tab_Config extends Mage_Adminh
           'maxlength' => '4',
           'size'      => '6',
       ));
-	  
+
       $fieldset->addField('slider_duration', 'text', array(
           'label'     => Mage::helper('slider')->__('Slider Duration'),
           'class'     => 'required-entry',
@@ -49,9 +49,9 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit_Tab_Config extends Mage_Adminh
           'maxlength'      => '6',
           'size'      => '8',
       ));
-		
-     
-     
+
+
+
       if ( Mage::getSingleton('adminhtml/session')->getSliderData() )
       {
           $form->setValues(Mage::getSingleton('adminhtml/session')->getSliderData());

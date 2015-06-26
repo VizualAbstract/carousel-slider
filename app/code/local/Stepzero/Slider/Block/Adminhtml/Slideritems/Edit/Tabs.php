@@ -49,7 +49,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tabs extends Mage_Adminht
           'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_image')->toHtml(),
       ));
 
-     
+
       return parent::_beforeToHtml();
   }
 }
