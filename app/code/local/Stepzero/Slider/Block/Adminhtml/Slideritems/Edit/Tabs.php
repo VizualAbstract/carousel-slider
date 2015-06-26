@@ -45,7 +45,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tabs extends Mage_Adminht
       // ));
       $this->addTab('form_image', array(
           'label'     => Mage::helper('slider')->__('Slider Image'),
-          'title'     => Mage::helper('slider')->__('Slider Image Preview'),
+          'title'     => Mage::helper('slider')->__('Slider Image'),
           'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_image')->toHtml(),
       ));
 
