@@ -33,19 +33,19 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tabs extends Mage_Adminht
           'title'     => Mage::helper('slider')->__('Slider Item Information'),
           'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_form')->toHtml(),
       ));
-      $this->addTab('form_links', array(
-          'label'     => Mage::helper('slider')->__('Slider Image Links'),
-          'title'     => Mage::helper('slider')->__('Slider Image Links'),
-          'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_links')->toHtml(),
-      ));
-      $this->addTab('form_manual_image', array(
-          'label'     => Mage::helper('slider')->__('Slider Image manual'),
-          'title'     => Mage::helper('slider')->__('Slider Image manual'),
-          'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_manual')->toHtml(),
-      ));
+      // $this->addTab('form_links', array(
+      //     'label'     => Mage::helper('slider')->__('Slider Image Links'),
+      //     'title'     => Mage::helper('slider')->__('Slider Image Links'),
+      //     'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_links')->toHtml(),
+      // ));
+      // $this->addTab('form_manual_image', array(
+      //     'label'     => Mage::helper('slider')->__('Slider Image manual'),
+      //     'title'     => Mage::helper('slider')->__('Slider Image manual'),
+      //     'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_manual')->toHtml(),
+      // ));
       $this->addTab('form_image', array(
           'label'     => Mage::helper('slider')->__('Slider Image'),
-          'title'     => Mage::helper('slider')->__('Slider Image'),
+          'title'     => Mage::helper('slider')->__('Slider Image Preview'),
           'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_image')->toHtml(),
       ));
 
