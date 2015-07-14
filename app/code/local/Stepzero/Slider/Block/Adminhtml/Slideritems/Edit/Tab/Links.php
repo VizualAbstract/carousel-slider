@@ -29,7 +29,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Links extends Mage_Ad
             return parent::_toHtml();
         }
 
-		
+
         $collection = Mage::getModel('slider/slider_links')
             ->getResourceCollection()
             ->addSliderLinkFilter( Mage::registry('slideritems_data')->getSlideritem_id() )
@@ -50,12 +50,12 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Links extends Mage_Ad
         );
 
         $this->setChild('addButton',
-            $this->getLayout()->createBlock('adminhtml/widget_button')
-                ->setData(array(
-                    'label'     => Mage::helper('slider')->__('Add New Link'),
-                    'onclick'   => 'newlink.add(this)',
-                    'class' => 'add'
-                ))
+        $this->getLayout()->createBlock('adminhtml/widget_button')
+            ->setData(array(
+                'label'     => Mage::helper('slider')->__('Add New Link'),
+                'onclick'   => 'newlink.add(this)',
+                'class' => 'add'
+            ))
         );
         return parent::_prepareLayout();
     }
@@ -69,6 +69,6 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Links extends Mage_Ad
     {
         return $this->getChildHtml('addButton');
     }
-  
-	
+
+
 }

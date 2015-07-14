@@ -31,7 +31,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
       ));
 
       $fieldset->addField('slideritem_description', 'editor', array(
-          'label'     => Mage::helper('slider')->__('Description'),
+          'label'     => Mage::helper('slider')->__('Caption'),
           'name'      => 'slideritem_description',
           'wysiwyg'   => false,
       ));
@@ -39,6 +39,11 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
       $fieldset->addField('slider_url', 'text', array(
           'label'     => Mage::helper('slider')->__('URL'),
           'name'      => 'slider_url',
+      ));
+
+      $fieldset->addField('slider_linktext', 'text', array(
+          'label'     => Mage::helper('slider')->__('Button Text'),
+          'name'      => 'slider_linktext',
       ));
 
       $fieldset->addField('slideritem_slider', 'select', array(
@@ -49,7 +54,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
       ));
 
       $fieldset->addField('filename', 'file', array(
-          'label'     => Mage::helper('slider')->__('Slider Image'),
+          'label'     => Mage::helper('slider')->__('Upload Image'),
           'required'  => false,
           'name'      => 'filename',
 	    ));

@@ -45,32 +45,36 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Grid extends Mage_Adminhtml_Bl
 
   protected function _prepareColumns()
   {
-      $this->addColumn('slideritem_id', array(
-          'header'    => Mage::helper('slider')->__('ID'),
-          'align'     =>'right',
-          'width'     => '50px',
-          'index'     => 'slideritem_id',
-      ));
+    $this->addColumn('slideritem_id', array(
+      'header'    => Mage::helper('slider')->__('ID'),
+      'align'     =>'right',
+      'width'     => '50px',
+      'index'     => 'slideritem_id',
+    ));
 
-      $this->addColumn('slideritem_title', array(
-          'header'    => Mage::helper('slider')->__('Title'),
-          'align'     =>'left',
-          'index'     => 'slideritem_title',
-      ));
+    $this->addColumn('slideritem_title', array(
+      'header'    => Mage::helper('slider')->__('Title'),
+      'align'     =>'left',
+      'index'     => 'slideritem_title',
+    ));
 
+    $this->addColumn('slideritem_description', array(
+      'header'    => Mage::helper('slider')->__('Description'),
+      'align'     =>'left',
+      'index'     => 'slideritem_description',
+    ));
 
-      $this->addColumn('slideritem_description', array(
-          'header'    => Mage::helper('slider')->__('Description'),
-          'align'     =>'left',
-          'index'     => 'slideritem_description',
-      ));
+    $this->addColumn('slider_url', array(
+      'header'    => Mage::helper('slider')->__('URL'),
+      'align'     =>'left',
+      'index'     => 'slider_url',
+    ));
 
-      $this->addColumn('slider_url', array(
-          'header'    => Mage::helper('slider')->__('URL'),
-          'align'     =>'left',
-          'index'     => 'slider_url',
-      ));
-
+    // $this->addColumn('slider_linktext', array(
+    //   'header'    => Mage::helper('slider')->__('Button Text'),
+    //   'align'     =>'left',
+    //   'index'     => 'slider_linktext',
+    // ));
 
 		if ( !Mage::app()->isSingleStoreMode() ) {
 			$this->addColumn('store_id', array(

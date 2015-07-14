@@ -13,10 +13,11 @@
  * @category    Stepzero
  * @package     Stepzero_Slider
  * @copyright   Copyright (c) 2014 Stepzero. (http://www.stepzero.solutions)
- * @license     http://www.stepzero.solutions/magento/licenses/Stepzero_Slider
+ * @license     http://www.stepzero.solutions/licenses/Stepzero_Slider
  */
-class Stepzero_Slider_Model_Slider_Links extends Mage_Core_Model_Abstract{
-	public function _construct(){
-		$this->_init('slider/slider_links');
-	}
-}
+$installer = $this;
+$installer->startSetup();
+$installer->run("
+    ALTER TABLE `{$installer->getTable('slider/slider_items')}` ADD `slider_linktext` VARCHAR( 200 ) NULL AFTER `slider_url` ;
+");
+$installer->endSetup();

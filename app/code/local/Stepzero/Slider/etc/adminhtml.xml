@@ -38,18 +38,18 @@
 		<cms>
 		<children>
 			<slidertab translate="title" module="slider">
-				<title>Slider</title>
+				<title>Carousels</title>
 				<sort_order>15</sort_order>
-					<children>
-                        <slider translate="title" module="slider">
-                            <title>Slider</title>
-							<action>adminhtml/slider</action>
-                        </slider>
-                        <slideritems translate="title" module="slider">
-                            <title>Slider Items</title>
-							<action>adminhtml/slideritems</action>
-                        </slideritems>
-					</children>
+				<children>
+          <slider translate="title" module="slider">
+            <title>Sliders</title>
+						<action>adminhtml/slider</action>
+          </slider>
+          <slideritems translate="title" module="slider">
+            <title>Slider Items</title>
+						<action>adminhtml/slideritems</action>
+          </slideritems>
+				</children>
 			</slidertab>
 		</children>
 		</cms>

@@ -17,45 +17,60 @@
  * @license     http://www.stepzero.solutions/magento/licenses/Stepzero_Slider
  */
 ?>
+
 <div id="newlink_container">
 <?php if( !$sliderlinks ): ?>
 <?php else: ?>
     <div class="entry-edit-head">
-    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('slider')->__('Assigned Links/Content') ?></h4>
+      <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('slider')->__('Assigned Links/Content') ?></h4>
     </div>
     <?php foreach($sliderlinks->getItems() as $_item):?>
         <div class="fieldset fieldset-wide" id="poll_answer_fieldset_<?php echo $_item->getSliderlink_id() ?>">
-        <table cellspacing="0" class="form-list">
+          <table cellspacing="0" class="form-list" style="max-width: 500px">
             <tr>
-                <td class="label"><label for="newlink_<?php echo $_item->getSliderlink_id() ?>"><?php echo Mage::helper('slider')->__('Title') ?> </label></td>
-                <td class="value"><input name="sliderlinktitle_edit[<?php echo $_item->getSliderlink_id() ?>]" 
-				type="text" size="50" maxlength="150px" value="<?php echo $_item->getSliderlink_title()?>" /></td>
+              <td class="label">
+                <label for="newlink_<?php echo $_item->getSliderlink_id() ?>"><?php echo Mage::helper('slider')->__('Title') ?></label>
+              </td>
+              <td class="value">
+                <input name="sliderlinktitle_edit[<?php echo $_item->getSliderlink_id() ?>]" type="text" size="50" maxlength="150" class="input-text" value="<?php echo $_item->getSliderlink_title()?>" />
+              </td>
             </tr>
             <tr>
-                <td class="label"><label for="sort_<?php echo $_item->getSliderlink_id() ?>"><?php echo Mage::helper('slider')->__('Positions') ?></label></td>
-                <td class="value">
-				Top=<input type="text" name="positionx_edit[<?php echo $_item->getSliderlink_id() ?>]" maxlength="4" size="5" value="<?php echo $_item->getSliderlink_x()?>" /> 
-				Left=<input type="text" name="positiony_edit[<?php echo $_item->getSliderlink_id() ?>]" maxlength="4" size="5" value="<?php echo $_item->getSliderlink_y()?>" /> 
-                </td>
-             </tr>
+              <td class="label">
+                <label for="sort_<?php echo $_item->getSliderlink_id() ?>"><?php echo Mage::helper('slider')->__('Positioning') ?></label>
+              </td>
+              <td class="value">
+          			Top: <input type="text" name="positionx_edit[<?php echo $_item->getSliderlink_id() ?>]" maxlength="4" size="5" class="input-text" value="<?php echo $_item->getSliderlink_x()?>" style="max-width: 40px; display: inline;" />
+          			Left: <input type="text" name="positiony_edit[<?php echo $_item->getSliderlink_id() ?>]" maxlength="4" size="5" class="input-text" value="<?php echo $_item->getSliderlink_y()?>" style="max-width: 40px; display: inline;" />
+              </td>
+            </tr>
+<?php /*
+            Removing caption/content of link
             <tr>
-                <td class="label"><label for="sort_<?php echo $_item->getSliderlink_id() ?>"><?php echo Mage::helper('slider')->__('Content') ?></label></td>
-                <td class="value"> <input type="text" name="linkcontent_edit[<?php echo htmlentities( $_item->getSliderlink_id() ) ?>]" 
-				size="150" id="edit_content_<?php echo htmlentities( $_item->getSliderlink_id() ) ?>" style="padding:5px;"  />
-                </td>
-             </tr>
+              <td class="label">
+                <label for="sort_<?php echo $_item->getSliderlink_id() ?>"><?php echo Mage::helper('slider')->__('Content') ?></label>
+              </td>
+              <td class="value">
+                <input type="text" name="linkcontent_edit[<?php echo htmlentities( $_item->getSliderlink_id() ) ?>]" size="150" id="edit_content_<?php echo htmlentities( $_item->getSliderlink_id() ) ?>" />
+              </td>
+            </tr>
+*/ ?>
             <tr>
-                <td class="label"><label for="deletelink_<?php echo $_item->getSliderlink_id() ?>"><?php echo Mage::helper('slider')->__('Remove Link') ?></label></td>
-                <td class="value"><input type="checkbox" name="delete[]" value="<?php echo $_item->getSliderlink_id() ?>"  /> Delete Link</td>
-             </tr>
-        </table>
+              <td class="label">
+                <label for="deletelink_<?php echo $_item->getSliderlink_id() ?>"><?php echo Mage::helper('slider')->__('Remove Link') ?></label>
+              </td>
+              <td class="value">
+                <input type="checkbox" name="delete[]" value="<?php echo $_item->getSliderlink_id() ?>"  /> Delete Link
+              </td>
+            </tr>
+          </table>
         </div>
-		
-<script type="text/javascript">
-//<![CDATA[
-	document.getElementById("edit_content_<?php echo htmlentities( $_item->getSliderlink_id() ) ?>").value= '<?php echo $_item->getSliderlink_content()?>';
-//]]>
-</script>
+
+        <script type="text/javascript">
+          //<![CDATA[
+          	document.getElementById("edit_content_<?php echo htmlentities( $_item->getSliderlink_id() ) ?>").value= '<?php echo $_item->getSliderlink_content()?>';
+          //]]>
+        </script>
 
     <?php endforeach; ?>
 <?php endif; ?>

@@ -34,8 +34,8 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tabs extends Mage_Adminht
           'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_form')->toHtml(),
       ));
       // $this->addTab('form_links', array(
-      //     'label'     => Mage::helper('slider')->__('Slider Image Links'),
-      //     'title'     => Mage::helper('slider')->__('Slider Image Links'),
+      //     'label'     => Mage::helper('slider')->__('Slider Content'),
+      //     'title'     => Mage::helper('slider')->__('Slider Content'),
       //     'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_links')->toHtml(),
       // ));
       // $this->addTab('form_manual_image', array(

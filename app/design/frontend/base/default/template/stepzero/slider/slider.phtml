@@ -21,15 +21,18 @@
  * ...in your CMS page
  */
 ?>
+<h5>Start Stepzero Carousel</h5>
 <?php
 	$sliderID = $this->getData('slider_id');
 	$sliderName = $this->getData('slider_name');
 	$slidercontent = $this->getLoadedSliderImages( $sliderID, $sliderName );
 ?>
 <?php if( !empty( $slidercontent ) ){?>
+	<h6>Not Empty</h6>
 	<section class="carousel-slider">
 		<div id="carousel-generic" class="carousel slide" data-ride="carousel">
 			<?php echo $slidercontent; ?>
 		</div>
 	</section>
 <?php } ?>
+<h5>End Stepzero Carousel</h5>

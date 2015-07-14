@@ -19,48 +19,47 @@
 class Stepzero_Slider_Block_Slider extends Mage_Core_Block_Template
 {
 
-    protected function _construct()
-    {
-        $this->addData(array('cache_lifetime' => false));//cache is set to week ( 7 days 36288000)
-        $this->addCacheTag(array(
-            Mage_Catalog_Model_Product::CACHE_TAG
-        ));
-    }
+	protected function _construct()
+	{
+		$this->addData(array('cache_lifetime' => false));//cache is set to week ( 7 days 36288000)
+		$this->addCacheTag(array(
+			Mage_Catalog_Model_Product::CACHE_TAG
+		));
+	}
 
 
-    /**
-     * Get Key pieces for caching block content
-     *
-     * @return array
-     */
-    public function getCacheKeyInfo()
-    {
-        $shortCacheId = array(
-            'SLIDERS',
+	/**
+	 * Get Key pieces for caching block content
+	 *
+	 * @return array
+	 */
+	public function getCacheKeyInfo()
+	{
+	  $shortCacheId = array(
+	    'SLIDERS',
 			Mage::app()->getStore()->getId(),
-            Mage::getDesign()->getPackageName(),
-            Mage::getDesign()->getTheme('template'),
-            'template' => $this->getTemplate(),
-            'name' => $this->getNameInLayout(),
-        );
-        $cacheId = $shortCacheId;
-        return $cacheId;
-    }
+	    Mage::getDesign()->getPackageName(),
+	    Mage::getDesign()->getTheme('template'),
+	    'template' => $this->getTemplate(),
+	    'name' => $this->getNameInLayout(),
+	  );
+	  $cacheId = $shortCacheId;
+	  return $cacheId;
+	}
 
 
 	public function _prepareLayout()
-    {
+	{
 		return parent::_prepareLayout();
-    }
+	}
 
-     public function getSlider()
-     {
-        if (!$this->hasData('slider')) {
-            $this->setData('slider', Mage::registry('slider'));
-        }
-        return $this->getData('slider');
-
-    }
+	public function getSlider()
+	{
+	  if (!$this->hasData('slider')) {
+	    $this->setData('slider', Mage::registry('slider'));
+	  }
+	  return $this->getData('slider');
+	}
 
 	public function getLoadedSliderImages( $slideridentifier=1, $cid='generic_slider' ){
 		$storeid = Mage::app()->getStore()->getId();
@@ -73,55 +72,71 @@ class Stepzero_Slider_Block_Slider extends Mage_Core_Block_Template
 		$collection->getSelect()->order('slider_sort ASC');
 		$sliders = $collection->getData();
 		$output = '';
-		$first=true;
+		$first = true;
 		$ol = '<ol class="carousel-indicators">';
-		$slidto = 0;
+		$slide_to = 0;
 
 		foreach( $sliders as $slider ){
 			if($slider['status']){
-/*
+
+				/*	This is being disabled because most modern carousel scripts automatically generate pagination
+					$ol .= '<li data-target="#' . $cid . '" data-slide-to="' . slide_to . '"';
+					$slide_to++;
+					if($first) {
+						$ol .= ' class="active"';
+					}
+					$ol .= ' >';
+				*/
+
+        $output .= '<div class="slide-item">';
+
+/* SLIDER LINK ITEMS -- DISABLED
 				$slideritem_links = Mage::getModel('slider/slider_links')
 					->getResourceCollection()
 					->addSliderLinkFilter( (int)$slider['slideritem_id'] )
 					->load()->getData();
 				var_dump($slideritem_links);
 */
-				$ol .= '<li data-target="#'.$cid.'" data-slide-to="'.$slidto.'"';
-				$slidto++;
-				if( $first ) $ol .= ' class="active"';
-				$ol .= ' ></li>
-
-				';
+/*
 				$url = !empty($slider['slider_url'])?'<a href="'.$slider['slider_url'].'" title="'.$slider['slideritem_title'].'">':'';
 				$urlend = !empty($slider['slider_url'])?'</a>':'';
-
-				$output .= '<div class="item ';
-				if( $first ) { $output .= 'active'; $first=false; }
+*/
+/*		  $output .= '<div class="item ';
+					if( $first ) {
+						$output .= 'active'; $first=false;
+					}
 				$output .= '">';
+*/
+/*
 				$output .= $url.'<img src="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $slider['slider_image_path'].'"
 									alt="'.$slider['slideritem_title'].'" />'.$urlend;
-				if( ! empty( $slider['slideritem_description'] ) ){
-					$output .= '<div class="carousel-caption">
-									';
-					$output .= $slider['slideritem_description'];
-    	            $output .= '	';
-	                $output .= '   </div>';
-				}
-                $output .= '</div>';
-
 */
+				if( ! empty( $slider['slideritem_description'] ) ){
+					$output .= '<div class="slide-caption">';
+						$output .= $slider['slideritem_description'];
+          $output .= '</div>';
+				}
 
+				// if( ! empty( $slider['slider_linktext'] ) ){
+				// 	$output .= '<a href="">';
+				// 		$output .= $slider['slider_linktext'];
+    //       $output .= '</a>';
+				// }
+
+        $output .= '</div>';
 
 			}
 		}
-		$ol .= '</ol>
-
+		/*
+			$ol .= '</ol>
 		';
+		*/
 		if( empty( $output ) ) return false;
 		$outputRender = '<div class="carousel-inner">
 					' . $output . '
 					</div>';
-		if( count($sliders)>1 ) {
+		if( count($sliders) > 1 ) {
+					$outputRender .= $ol;
 					$outputRender .= '
 								 <!-- Controls -->
 								  <a class="left carousel-control" href="#'.$cid.'" role="button" data-slide="prev">
