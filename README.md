@@ -1,4 +1,4 @@
-MagentoSlider
+Carousel-Slider
 =============
 
 This is very simple but very powerfull slider module.
