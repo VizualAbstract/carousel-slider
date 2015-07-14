@@ -12,7 +12,7 @@ From here you'll be able to create **Carousels** and **Slides**. Carousels are e
 After creating a **Carousel** you'll need to embed it into a static block using the following tag:
 
 ```js
-{{block type="slider/slider" carousel_id="1" carousel_name="my-carousel" template="stepzero/slider/slider.phtml" name="slider" as="slider" }}
+{{block type="slider/slider" carousel_id="1" carousel_name="my-carousel" template="carousel/slider/slider.phtml" name="slider" as="slider" }}
 ```
 
 --

@@ -1,4 +1,4 @@
-app/code/local/Stepzero     																					app/code/local/Stepzero
+app/code/local/Carousel     																					app/code/local/Carousel
 
 app/design/adminhtml/default/default/layout/slider.xml								app/design/adminhtml/default/default/layout/slider.xml
 
@@ -6,6 +6,6 @@ app/design/adminhtml/default/default/template/slider 									app/design/adminht
 
 app/design/frontend/base/default/layout/slider.xml 										app/design/frontend/base/default/layout/slider.xml
 
-app/design/frontend/base/default/template/stepzero 										app/design/frontend/base/default/template/stepzero
+app/design/frontend/base/default/template/carousel 										app/design/frontend/base/default/template/carousel
 
-app/etc/modules/Stepzero_Slider.xml 																	app/etc/modules/Stepzero_Slider.xml
+app/etc/modules/Carousel_Slider.xml 																	app/etc/modules/Carousel_Slider.xml
