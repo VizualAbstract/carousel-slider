@@ -70,11 +70,11 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Grid extends Mage_Adminhtml_Bl
       'index'     => 'slider_url',
     ));
 
-    // $this->addColumn('slider_linktext', array(
-    //   'header'    => Mage::helper('slider')->__('Button Text'),
-    //   'align'     =>'left',
-    //   'index'     => 'slider_linktext',
-    // ));
+    $this->addColumn('slider_linktext', array(
+      'header'    => Mage::helper('slider')->__('Button Text'),
+      'align'     =>'left',
+      'index'     => 'slider_linktext',
+    ));
 
 		if ( !Mage::app()->isSingleStoreMode() ) {
 			$this->addColumn('store_id', array(

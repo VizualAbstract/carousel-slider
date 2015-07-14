@@ -72,83 +72,46 @@ class Stepzero_Slider_Block_Slider extends Mage_Core_Block_Template
 		$collection->getSelect()->order('slider_sort ASC');
 		$sliders = $collection->getData();
 		$output = '';
-		$first = true;
-		$ol = '<ol class="carousel-indicators">';
-		$slide_to = 0;
 
 		foreach( $sliders as $slider ){
 			if($slider['status']){
-
-				/*	This is being disabled because most modern carousel scripts automatically generate pagination
-					$ol .= '<li data-target="#' . $cid . '" data-slide-to="' . slide_to . '"';
-					$slide_to++;
-					if($first) {
-						$ol .= ' class="active"';
-					}
-					$ol .= ' >';
-				*/
-
+				/* Wrap slide image with a link if there's no button-text (slider_linktext) entered */
         $output .= '<div class="slide-item">';
-
-/* SLIDER LINK ITEMS -- DISABLED
-				$slideritem_links = Mage::getModel('slider/slider_links')
-					->getResourceCollection()
-					->addSliderLinkFilter( (int)$slider['slideritem_id'] )
-					->load()->getData();
-				var_dump($slideritem_links);
-*/
-/*
-				$url = !empty($slider['slider_url'])?'<a href="'.$slider['slider_url'].'" title="'.$slider['slideritem_title'].'">':'';
-				$urlend = !empty($slider['slider_url'])?'</a>':'';
-*/
-/*		  $output .= '<div class="item ';
-					if( $first ) {
-						$output .= 'active'; $first=false;
+					if( !empty($slider['slider_url']) && empty($slider['slider_linktext']) ){
+						$output .= '<a href="' . $slider['slider_url'] . '" class="slide-link" title="' . $slider['slideritem_title'] . '">';
 					}
-				$output .= '">';
-*/
-/*
-				$output .= $url.'<img src="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $slider['slider_image_path'].'"
-									alt="'.$slider['slideritem_title'].'" />'.$urlend;
-*/
-				if( ! empty( $slider['slideritem_description'] ) ){
-					$output .= '<div class="slide-caption">';
-						$output .= $slider['slideritem_description'];
-          $output .= '</div>';
-				}
-
-				// if( ! empty( $slider['slider_linktext'] ) ){
-				// 	$output .= '<a href="">';
-				// 		$output .= $slider['slider_linktext'];
-    //       $output .= '</a>';
-				// }
-
+						/* Create the image tag for the slide */
+						$output .= '<img src="' . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $slider['slider_image_path'] . '" alt="' . $slider['slideritem_title'] . '" />';
+						/* Generate a caption box */
+						if( !empty($slider['slideritem_description']) ){
+							$output .= '<div class="slide-caption">';
+								$output .= $slider['slideritem_description'];
+		          $output .= '</div>';
+						}
+						/* Generate a call-to-action button */
+						if( !empty($slider['slider_linktext']) && !empty($slider['slider_url']) ){
+							$output .= '<a href="' . $slider['slider_url'] . '" class="slide-button" title="' . $slider['slideritem_title'] . '">';
+								$output .= $slider['slider_linktext'];
+		          $output .= '</a>';
+						}
+						/* SLIDER LINK ITEMS -- DISABLED -- For now, disallowing the ability for people to add multiple links to the carousel
+							$slideritem_links = Mage::getModel('slider/slider_links')
+								->getResourceCollection()
+								->addSliderLinkFilter( (int)$slider['slideritem_id'] )
+								->load()->getData();
+							var_dump($slideritem_links);
+						*/
+					/* Close the surrounding link */
+					if( !empty($slider['slider_url']) && empty($slider['slider_linktext']) ){
+	          $output .= '</a>';
+					}
         $output .= '</div>';
-
 			}
 		}
-		/*
-			$ol .= '</ol>
-		';
-		*/
-		if( empty( $output ) ) return false;
-		$outputRender = '<div class="carousel-inner">
-					' . $output . '
-					</div>';
-		if( count($sliders) > 1 ) {
-					$outputRender .= $ol;
-					$outputRender .= '
-								 <!-- Controls -->
-								  <a class="left carousel-control" href="#'.$cid.'" role="button" data-slide="prev">
-									<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-									<span class="sr-only">Previous</span>
-								  </a>
-								  <a class="right carousel-control" href="#'.$cid.'" role="button" data-slide="next">
-									<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-									<span class="sr-only">Next</span>
-								  </a>
-					';
+		if( empty($output) ){
+			return false;
 		}
+		$outputRender = '<div class="slide-wrapper">' . $output . '</div>';
 		return $outputRender;
 	}
 }

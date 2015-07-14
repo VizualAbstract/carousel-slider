@@ -18,10 +18,10 @@
  */
 -->
 <config>
-	
+
     <modules>
         <Stepzero_Slider>
-            <version>1.0.2.2</version>
+            <version>1.0.2.3</version>
         </Stepzero_Slider>
     </modules>
 
@@ -33,13 +33,13 @@
                 <class>Stepzero_Slider_Helper</class>
             </slider>
         </helpers>
-		
+
 		<models>
 			<slider>
 				<class>Stepzero_Slider_Model</class>
 				<resourceModel>slider_resource</resourceModel>
 			</slider>
-			
+
 			<slider_resource>
 				<class>Stepzero_Slider_Model_Resource</class>
 				<entities>
@@ -55,7 +55,7 @@
 				</entities>
 			</slider_resource>
 		</models>
-		
+
 		<resources>
 			<slider_setup>
 				<setup>
@@ -75,15 +75,15 @@
 				<connection>
 					<use>core_read</use>
 				</connection>
-			</slider_read>      
+			</slider_read>
 		</resources>
-	
+
 		<blocks>
 			<slider>
 				<class>Stepzero_Slider_Block</class>
 			</slider>
 		</blocks>
-		
+
     </global>
 	<!--- FRONT END -->
 	<frontend>
@@ -92,8 +92,8 @@
 				<class>Stepzero_Slider_Block_Slider</class>
 			</slider>
 		</blocks>
-		
-		
+
+
 		<layout>
 			<updates>
 				<slider>
@@ -102,8 +102,8 @@
 			</updates>
 		</layout>
 	</frontend>
-	
-	
+
+
 	<!--- ADMINHTML -->
 	<adminhtml>
 
@@ -113,8 +113,8 @@
 				<class>Stepzero_Slider_Block_Adminhtml_Slideritems_Grid</class>
 			</slider>
 		</blocks>
-		
-		
+
+
 		<layout>
 			<updates>
 				<slider>
@@ -127,7 +127,7 @@
 
 	<!--- ADMIN -->
     <admin>
-	
+
         <routers>
 			<adminhtml>
 				<args>
@@ -137,6 +137,6 @@
 				</args>
 			</adminhtml>
         </routers>
-		
+
     </admin>
 </config>
