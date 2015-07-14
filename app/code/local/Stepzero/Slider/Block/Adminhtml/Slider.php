@@ -20,8 +20,8 @@ class Stepzero_Slider_Block_Adminhtml_Slider extends Mage_Adminhtml_Block_Widget
 	public function __construct(){
 		$this->_controller = 'adminhtml_slider';
 		$this->_blockGroup = 'slider';
-		$this->_headerText = Mage::helper('slider')->__('Slider Manager');
-		$this->_addButtonLabel = Mage::helper('slider')->__('Add Slider');
+		$this->_headerText = Mage::helper('slider')->__('Carousel Manager');
+		$this->_addButtonLabel = Mage::helper('slider')->__('Add Carousel');
 		parent::__construct();
 	}
 }

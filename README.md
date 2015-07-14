@@ -1,13 +1,140 @@
-Carousel-Slider
+Modman compatible "Carousel-Slider"
 =============
 
-This is very simple but very powerfull slider module.
+Based on [MagentoSlider](https://github.com/stepzerosolutions/MagentoSlider) by [stepzerosolutions](https://github.com/stepzerosolutions).
 
-You can create multiple sliders on your magento theme. Developer need to have basic understanding for magento theme in order to implement this magento module.
+This is a simple, but flexible carousel slider for Magento.
+
+
+## Overview
+
+Carousel-Slider will add a contextual menu to your Magento installation called Carousel Slider (found under CMS > Carousel Slider).
+
+From here you'll be able to create **Carousels** and **Slides**. Carousels are embedeble into content blocks and house individual slides. Slides have a number of options and fields, including caption blocks and links.
+
+## Integration
+After creating a **Carousel** you'll need to embed it in static blocks using following tag:
+
+```js
+{{block type="slider/slider" slider_id="1" slider_name="my-carousel" template="stepzero/slider/slider.phtml" name="slider" as="slider" }}
+```
+
+**REMEMBER:** Update the values for `slider_id` and `slider_name` for each carousel you embed.
+
+- **slider_id**: This is an ID Number provided to you whenever you create a new **carousel**. Look for it in the ID column on the Carousel Grid page (found under CMS > Carousel Slider > Carousel)
+- **slider_name**: Use this to provide a unique html `id` tag for your carousel, allowing you to call specific styles or scripts on it.
+
+## Javascript
+The module will be installed without any javascript for now. Future plans will allow you to leave javascript disabled, or install a variety of scripts (lke Owl or Slick) and whether or not to also include jQuery (although in Magento 1.9, jQuery is already included).
+
+## Styling the Carousel
+For now, the carousel comes without styling. This will allow you to use it for things other than a carousel, such as stacking images on a homepage.
+
+#### HTML Structure Overview
+Slide will render different depending on which form fields and filled out in the backend
+
+```html
+	<section id="{{ slide_name }}" class="carousel-slider">
+		<div class="slide-wrapper">
+
+			<!-- slide: no link, no caption -->
+			<div class="slide-item">
+				<img src="{{ slide_image_path }}" class="slide-image">
+			</div>
+
+			<!-- slide: link, no caption -->
+			<div class="slide-item">
+				<a href="{{ slide_url }}" class="slide-link">
+					<img src="{{ slide_image_path }}" class="slide-image" title="{{ slide_title }}">
+				</a>
+			</div>
+
+			<!-- slide: link, caption -->
+			<div class="slide-item">
+				<a href="{{ slide_url }}" class="slide-link">
+					<img src="{{ slide_image_path }}" class="slide-image" title="{{ slide_title }}">
+					<div class="slide-caption">
+						{{ slide_caption }}
+					</div>
+				</a>
+			</div>
+
+			<!-- slide: link, caption, button-text -->
+			<div class="slide-item">
+				<img src="{{ slide_image_path }}" class="slide-image" title="{{ slide_title }}">
+				<div class="slide-caption">
+					{{ slide_caption }}
+				</div>
+				<a href="{{ slide_url }}" title="{{ slide_title }}">
+					{{ button_text }}
+				</a>
+			</div>
+		</div>
+	</section>
+```
+
+#### Class Structure Overview
+
+```css
+section.carousel-slider {
+	/* Module Wrapper */
+
+	div.slide-wrapper {
+		/* Inner Wrapper */
+
+		div.slide-item {
+			/* Individual Slide */
+
+			a.slide-link {
+				/* If available, will wrap slide in a link */
+
+			}
+			img.slide-image {
+				/* The slide image */
+
+			}
+			div.slide-caption {
+				/* If available, a slide caption box */
+
+			}
+			a.slide-button {
+				/* If available, a call-to-action button */
+
+			}
+		}
+	}
+}
+```
 
 ## Installation
-add the following block to your CMS/Page
+
+Make sure you have modman installed. See [https://github.com/colinmollenhour/modman/](https://github.com/colinmollenhour/modman/) for details.
 
 ```
-{{block type="slider/slider" slider_id="1" slider_name="generic-carousel" template="stepzero/slider/slider.phtml" name="slider" as="slider" }}
+$ cd /var/www/html				# Wherever Magento is installed
+$ modman init					# This is only done once in your application root
+$ modman clone https://github.com/VizualAbstract/multiple-select-nav.git
 ```
+It's important that you re-index for the plugin to work properly (found under System > Index Management).
+
+If [n98-magerun](https://github.com/netz98/n98-magerun) is installed, all you have to do is run:
+
+```
+$ magerun index:reindex:all
+```
+
+### Allowing Symlinks
+
+  * Web server must follow symlinks
+  * For Magento, if using template files in a modman module, you must enable "Allow Symlinks" (found under System > Configuration > Advanced > Developer)
+
+![Allow Symlinks](http://host.coreycapetillo.com/git/media/allow-symlinks.png)
+
+## Working With modman
+For more information on working with modman modules, see their excellent tutorial at [https://github.com/colinmollenhour/modman/wiki/Tutorial](https://github.com/colinmollenhour/modman/wiki/Tutorial).
+
+## Future Plans
+- Create options to Enable, Disable, or select jQuery/Carousel Plugins (Owl Carousel or Slick.js)
+- Ability to automatically Enable/Disable carousel scripts
+- Allow the creation of multiple links (As opposed to 1 caption, 1 link)
+- Custom classes per slide item

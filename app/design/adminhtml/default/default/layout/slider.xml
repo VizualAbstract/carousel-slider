@@ -3,9 +3,9 @@
     <adminhtml_slider_index>
         <reference name="content">
 			<block type="core/text" name="slider_configuration_details">
-				<action method="setText">
+				<!-- <action method="setText">
 					<arg>Each slider will have its own configuration tab.</arg>
-				</action>
+				</action> -->
 			</block>
             <block type="slider/adminhtml_slider" name="slider" />
         </reference>
@@ -15,7 +15,6 @@
 		<remove name="root" />
         <block type="slider/adminhtml_slider_grid" name="slider_grid" output="toHtml" />
     </adminhtml_slider_grid>
-
 
     <adminhtml_slider_edit>
         <reference name="content">
@@ -37,7 +36,6 @@
         <block type="slider/adminhtml_slideritems_grid" name="slideritems_grid" output="toHtml" />
     </adminhtml_slideritems_grid>
 
-
     <adminhtml_slideritems_edit>
         <reference name="content">
             <block type="slider/adminhtml_slideritems_edit" name="slideritems_edit" />
@@ -46,6 +44,5 @@
             <block type="slider/adminhtml_slideritems_edit_tabs" name="slideritems_edit_tabs" />
         </reference>
     </adminhtml_slideritems_edit>
-
 
 </layout>

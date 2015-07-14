@@ -21,7 +21,7 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit_Tab_Form extends Mage_Adminhtm
   {
       $form = new Varien_Data_Form();
       $this->setForm($form);
-      $fieldset = $form->addFieldset('web_form', array('legend'=>Mage::helper('slider')->__('Slider information')));
+      $fieldset = $form->addFieldset('web_form', array('legend'=>Mage::helper('slider')->__('Carousel Information')));
 
       $fieldset->addField('slider_title', 'text', array(
           'label'     => Mage::helper('slider')->__('Title'),
@@ -30,7 +30,6 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit_Tab_Form extends Mage_Adminhtm
           'name'      => 'slider_title',
       ));
 
-
       $fieldset->addField('slider_description', 'textarea', array(
           'label'     => Mage::helper('slider')->__('Description'),
           'class'     => 'required-entry',
@@ -38,24 +37,20 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit_Tab_Form extends Mage_Adminhtm
           'name'      => 'slider_description',
       ));
 
-
-
       $fieldset->addField('status', 'select', array(
           'label'     => Mage::helper('slider')->__('Status'),
           'name'      => 'status',
           'values'    => array(
-              array(
-                  'value'     => 1,
-                  'label'     => Mage::helper('slider')->__('Enabled'),
-              ),
-
-              array(
-                  'value'     => 0,
-                  'label'     => Mage::helper('slider')->__('Disabled'),
-              ),
+            array(
+              'value'     => 1,
+              'label'     => Mage::helper('slider')->__('Enabled'),
+            ),
+            array(
+              'value'     => 0,
+              'label'     => Mage::helper('slider')->__('Disabled'),
+            ),
           ),
       ));
-
 
       if ( Mage::getSingleton('adminhtml/session')->getSliderData() )
       {

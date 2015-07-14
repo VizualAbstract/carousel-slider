@@ -34,7 +34,7 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Grid extends Mage_Adminhtml_Block_W
   }
 
   protected function _prepareColumns()
-  { 
+  {
       $this->addColumn('slider_id', array(
           'header'    => Mage::helper('slider')->__('ID'),
           'align'     =>'right',
@@ -47,40 +47,33 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Grid extends Mage_Adminhtml_Block_W
           'align'     =>'left',
           'index'     => 'slider_title',
       ));
-	  
+
       $this->addColumn('slider_description', array(
           'header'    => Mage::helper('slider')->__('Description'),
           'align'     =>'left',
           'index'     => 'slider_description',
       ));
 
+    //   $this->addColumn('slider_width', array(
+    //       'header'    => Mage::helper('slider')->__('Width'),
+    //       'align'     =>'center',
+		//       'width'     => '80px',
+    //       'index'     => 'slider_width',
+    //   ));
 
-	  
-      $this->addColumn('slider_width', array(
-          'header'    => Mage::helper('slider')->__('Width'),
-          'align'     =>'center',
-		  'width'     => '80px',
-          'index'     => 'slider_width',
-      ));
+    //   $this->addColumn('slider_height', array(
+    //       'header'    => Mage::helper('slider')->__('Height'),
+    //       'align'     =>'center',
+		//       'width'     => '80px',
+    //       'index'     => 'slider_height',
+    //   ));
 
-
-	  
-      $this->addColumn('slider_height', array(
-          'header'    => Mage::helper('slider')->__('Height'),
-          'align'     =>'center',
-		  'width'     => '80px',
-          'index'     => 'slider_height',
-      ));
-
-
-	  
-      $this->addColumn('slider_duration', array(
-          'header'    => Mage::helper('slider')->__('Duration'),
-          'align'     =>'center',
-		  'width'     => '80px',
-          'index'     => 'slider_duration',
-      ));
-	  
+    //   $this->addColumn('slider_duration', array(
+    //       'header'    => Mage::helper('slider')->__('Duration'),
+    //       'align'     =>'center',
+		//       'width'     => '80px',
+    //       'index'     => 'slider_duration',
+    //   ));
 
       $this->addColumn('status', array(
           'header'    => Mage::helper('slider')->__('Status'),
@@ -93,7 +86,7 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Grid extends Mage_Adminhtml_Block_W
               0 => 'Disabled',
           ),
       ));
-	  
+
 	  $this->addColumn('action',
 		  array(
 			  'header'    =>  Mage::helper('slider')->__('Action'),
@@ -110,8 +103,7 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Grid extends Mage_Adminhtml_Block_W
 			  'filter'    => false,
 			  'sortable'  => false
 	  ));
-		
-      return parent::_prepareColumns();
+    return parent::_prepareColumns();
   }
 
   protected function _prepareMassaction()
@@ -143,8 +135,7 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Grid extends Mage_Adminhtml_Block_W
 	  ));
 	  return $this;
   }
-	
-	
+
   public function getRowUrl($row)
   {
       return $this->getUrl('*/*/edit', array('id' => $row->getId()));

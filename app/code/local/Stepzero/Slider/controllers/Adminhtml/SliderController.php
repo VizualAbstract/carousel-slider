@@ -20,17 +20,17 @@ class Stepzero_Slider_Adminhtml_SliderController extends Mage_Adminhtml_Controll
 	protected function _initAction() {
 		$this->loadLayout()
 			->_setActiveMenu('cms')
-			->_addBreadcrumb(Mage::helper('adminhtml')->__('Slider Manager'), Mage::helper('adminhtml')->__('Slider Manager'));
-		
+			->_addBreadcrumb(Mage::helper('adminhtml')->__('Carousel Manager'), Mage::helper('adminhtml')->__('Carousel Manager'));
+
 		return $this;
-	}   
- 
+	}
+
 	public function indexAction() {
 		Mage::getSingleton('adminhtml/session')->setFormData( array() );
 		$this->_initAction()
 			->renderLayout();
 	}
-	
+
 	public function listAction(){
 		Mage::getSingleton('adminhtml/session')->setFormData( array() );
 		$this->_title('Slider');
@@ -53,27 +53,27 @@ class Stepzero_Slider_Adminhtml_SliderController extends Mage_Adminhtml_Controll
 			$this->loadLayout();
 			$this->_setActiveMenu('cms');
 
-			$this->_addBreadcrumb(Mage::helper('adminhtml')->__('Slider Manager'), Mage::helper('adminhtml')->__('Slider Manager'));
-			$this->_addBreadcrumb(Mage::helper('adminhtml')->__('Slider News'), Mage::helper('adminhtml')->__('Slider News'));
+			$this->_addBreadcrumb(Mage::helper('adminhtml')->__('Carousel Manager'), Mage::helper('adminhtml')->__('Carousel Manager'));
+			$this->_addBreadcrumb(Mage::helper('adminhtml')->__('Carousel News'), Mage::helper('adminhtml')->__('Carousel News'));
 
 			$this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
 
 			$this->renderLayout();
 		} else {
-			Mage::getSingleton('adminhtml/session')->addError(Mage::helper('slider')->__('Slider does not exist'));
+			Mage::getSingleton('adminhtml/session')->addError(Mage::helper('slider')->__('Carousel does not exist'));
 			$this->_redirect('*/*/');
 		}
 	}
- 
+
 	public function newAction() {
 		$this->_forward('edit');
 	}
- 
- 
+
+
 
 	public function saveAction() {
 		if ($data = $this->getRequest()->getPost()) {
-	  			
+
 			if( $data = $this->getRequest()->getPost() ){
 				Mage::getSingleton('adminhtml/session')->setFormData( $data );
 				$model = Mage::getModel('slider/slider');
@@ -86,7 +86,7 @@ class Stepzero_Slider_Adminhtml_SliderController extends Mage_Adminhtml_Controll
 					$model->save();
 					Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('slider')->__('Slider was successfully saved'));
 					Mage::getSingleton('adminhtml/session')->setFormData(false);
-					
+
 					if ($this->getRequest()->getParam('back')) {
 						$this->_redirect('*/*/edit', array('id' => $model->getSlider_id()));
 						return;
@@ -100,22 +100,22 @@ class Stepzero_Slider_Adminhtml_SliderController extends Mage_Adminhtml_Controll
 					return;
 				}
 			}
-			
+
 
         }
-        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('slider')->__('Unable to find slider to save'));
+        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('slider')->__('Unable to find Carousel to save'));
         $this->_redirect('*/*/');
 	}
- 
+
 	public function deleteAction() {
 		if( $this->getRequest()->getParam('id') > 0 ) {
 			try {
 				$model = Mage::getModel('slider/slider');
-				 
+
 				$model->setId($this->getRequest()->getParam('id'))
 					->delete();
-					 
-				Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Slider was successfully deleted'));
+
+				Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Carousel was successfully deleted'));
 				$this->_redirect('*/*/');
 			} catch (Exception $e) {
 				Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
@@ -146,7 +146,7 @@ class Stepzero_Slider_Adminhtml_SliderController extends Mage_Adminhtml_Controll
         }
         $this->_redirect('*/*/index');
     }
-	
+
     public function massStatusAction()
     {
         $sliderIds = $this->getRequest()->getParam('slider');
@@ -170,5 +170,5 @@ class Stepzero_Slider_Adminhtml_SliderController extends Mage_Adminhtml_Controll
         }
         $this->_redirect('*/*/index');
     }
-	
+
 }

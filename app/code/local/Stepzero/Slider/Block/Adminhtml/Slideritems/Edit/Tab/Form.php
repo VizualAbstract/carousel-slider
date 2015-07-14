@@ -21,7 +21,7 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
   {
       $form = new Varien_Data_Form();
       $this->setForm($form);
-      $fieldset = $form->addFieldset('web_form', array('legend'=>Mage::helper('slider')->__('Slider Item Information')));
+      $fieldset = $form->addFieldset('web_form', array('legend'=>Mage::helper('slider')->__('Slide Information')));
 
       $fieldset->addField('slideritem_title', 'text', array(
           'label'     => Mage::helper('slider')->__('Title'),
@@ -68,13 +68,13 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
         'values' => Mage::getSingleton('adminhtml/system_store')
                 ->getStoreValuesForForm(false, true),
       ));
+
     // } else {
     //   $fieldset->addField('store_id', 'hidden', array(
     //     'name' => 'stores[]',
     //     'value' => Mage::app()->getStore(true)->getId()
     //   ));
     // }
-
 
       $fieldset->addField('status', 'select', array(
           'label'     => Mage::helper('slider')->__('Status'),
@@ -91,7 +91,6 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
               ),
           ),
       ));
-
 
       $fieldset->addField('slider_sort', 'text', array(
           'label'     => Mage::helper('slider')->__('Sort Order'),
@@ -129,7 +128,6 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
         return Mage::registry('current_slideritems');
     }
 
-
     /**
      * Retrieve option array of widget types
      *
@@ -150,6 +148,5 @@ class Stepzero_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Form extends Mage_Adm
         }
         return $slidersArray;
     }
-
 
 }

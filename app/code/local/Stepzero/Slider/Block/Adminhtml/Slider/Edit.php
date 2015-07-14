@@ -37,7 +37,7 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit extends Mage_Adminhtml_Block_W
                   'onclick' => 'saveAndContinueEdit()',
                   'class' => 'save',
         ), -100);
-        $this->_updateButton('save', 'label', Mage::helper('slider')->__('Save Slider'));
+        $this->_updateButton('save', 'label', Mage::helper('slider')->__('Save Carousel'));
 
         $this->_formScripts[] = "
             function toggleEditor() {
@@ -63,9 +63,9 @@ class Stepzero_Slider_Block_Adminhtml_Slider_Edit extends Mage_Adminhtml_Block_W
     {
         if (Mage::registry('slider_data') && Mage::registry('slider_data')->getSlider_id())
         {
-            return Mage::helper('slider')->__('Edit Slider "%s"', $this->htmlEscape(Mage::registry('slider_data')->getSlider_title()));
+            return Mage::helper('slider')->__('Edit Carousel "%s"', $this->htmlEscape(Mage::registry('slider_data')->getSlider_title()));
         } else {
-            return Mage::helper('slider')->__('New Slider');
+            return Mage::helper('slider')->__('New Carousel');
         }
     }
 

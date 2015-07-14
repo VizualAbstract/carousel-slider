@@ -27,25 +27,7 @@
 	$slidercontent = $this->getLoadedSliderImages( $sliderID, $sliderName );
 ?>
 <?php if( !empty($slidercontent) ){ ?>
-	<section class="carousel-slider">
-		<div id="<?php echo $sliderName; ?>">
-			<?php echo $slidercontent; ?>
-		</div>
+	<section id="<?php echo $sliderName; ?>" class="carousel-slider">
+		<?php echo $slidercontent; ?>
 	</section>
 <?php } ?>
-<!--
-.carousel-slider {
-	.slides-wrapper {
-		.slide-item {
-			.slide-link {
-			}
-			.slide-image {
-			}
-			.slide-caption {
-			}
-			.slide-button {
-			}
-		}
-	}
-}
--->

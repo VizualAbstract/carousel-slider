@@ -20,29 +20,29 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 	protected function _initAction() {
 		$this->loadLayout()
 			->_setActiveMenu('cms')
-			->_addBreadcrumb(Mage::helper('adminhtml')->__('Slider Items Manager'), Mage::helper('adminhtml')->__('Slider Items Manager'));
-		
+			->_addBreadcrumb(Mage::helper('adminhtml')->__('Slide Item Manager'), Mage::helper('adminhtml')->__('Slide Item Manager'));
+
 		return $this;
-	}   
- 
+	}
+
 	public function indexAction() {
 		Mage::getSingleton('adminhtml/session')->setFormData( array() );
 		$this->_initAction()->renderLayout();
 	}
-	
+
 	public function listAction(){
 		Mage::getSingleton('adminhtml/session')->setFormData( array() );
 		$this->_title('Slider Items');
 		$this->_initAction()
 			->renderLayout();
 	}
-	
- 
+
+
 	public function newAction() {
 		$this->_forward('edit');
 	}
-	
-	
+
+
 	public function editAction() {
 
 	$this->loadLayout();
@@ -72,14 +72,14 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 
 			$this->_setActiveMenu('cms');
 
-			$this->_addBreadcrumb(Mage::helper('adminhtml')->__('Slider Manager'), Mage::helper('adminhtml')->__('Slider Items Manager'));
-			$this->_addBreadcrumb(Mage::helper('adminhtml')->__('Slider News'), Mage::helper('adminhtml')->__('Slider News'));
+			$this->_addBreadcrumb(Mage::helper('adminhtml')->__('Carousel Manager'), Mage::helper('adminhtml')->__('Carousel Manager'));
+			$this->_addBreadcrumb(Mage::helper('adminhtml')->__('Carousel News'), Mage::helper('adminhtml')->__('Carousel News'));
 
 			$this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
-			
-			
-			
-			
+
+
+
+
 			$this->renderLayout();
 			if ($this->getRequest()->getParam('back')) {
 				$this->_redirect('*/*/edit', array('id' => $model->getSlideritem_id()));
@@ -87,11 +87,11 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 			}
 			return;
 		} else {
-			Mage::getSingleton('adminhtml/session')->addError(Mage::helper('slider')->__('Slider does not exist'));
+			Mage::getSingleton('adminhtml/session')->addError(Mage::helper('slider')->__('Carousel does not exist'));
 			$this->_redirect('*/*/');
 		}
 	}
-	
+
 
 	public function saveAction() {
 		if(isset($data['stores'])) {
@@ -107,19 +107,19 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 
 		$imgurl = '';
 		if ($data = $this->getRequest()->getPost()) {
-			
+
 			if(isset($_FILES['filename']['name']) && $_FILES['filename']['name'] != '') {
-				try {	
-					/* Starting upload */	
+				try {
+					/* Starting upload */
 					$uploader = new Varien_File_Uploader('filename');
-					
+
 					// Any extention would work
 	           		$uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
 					$uploader->setAllowRenameFiles(true);
-					
-					// Set the file upload mode 
+
+					// Set the file upload mode
 					// false -> get the file directly in the specified folder
-					// true -> get the file in the product like folders 
+					// true -> get the file in the product like folders
 					//	(file.jpg will go in something like /media/f/i/file.jpg)
 					$uploader->setFilesDispersion(false);
 
@@ -128,14 +128,14 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 					$result = $uploader->save($path , $_FILES['filename']['name'] );
 					//Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)
 					$imgurl  = '/slider/'. $_FILES['filename']['name'];
-					
+
 				} catch (Exception $e) {
 		      		Mage::getSingleton('adminhtml/session')->addError(Mage::helper('web')->__('Image file is not uploaded. '. $e));
 		        }
 		        //this way the name is saved in DB
 	  			$data['filename'] = $_FILES['filename']['name'];
 			}
-	  			
+
 			if( $data = $this->getRequest()->getPost() ){
 				Mage::getSingleton('adminhtml/session')->setFormData( $data );
 				$model = Mage::getModel('slider/slider_items');
@@ -144,12 +144,12 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 					if( $id ){
 						$model->load( $id );
 					}
-					if( !empty($imgurl) ) { 
+					if( !empty($imgurl) ) {
 						$data['slider_image_path']=$imgurl;
 					} else {
 						$data['slider_image_path']=$data['slideritem_image_manual'];
 					}
-					
+
 					if( isset($data['stores']) ) {
 						if( in_array('0', $data['stores']) ){
 							$data['store_id'] = '0';
@@ -186,7 +186,7 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 							  $collection->save();
 						}
 					}
-					
+
 					$edit_slider_links = $this->getRequest()->getParam('linkcontent_edit');
 					if($edit_slider_links){
 						$sliderlinktitle = $this->getRequest()->getParam('sliderlinktitle_edit');
@@ -203,10 +203,10 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 							  $collection->save();
 						}
 					}
-					
-					Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('slider')->__('Slider item was successfully saved'));
+
+					Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('slider')->__('Slide Item was successfully saved'));
 					Mage::getSingleton('adminhtml/session')->setFormData(false);
-					
+
 					if ($this->getRequest()->getParam('back')) {
 						$this->_redirect('*/*/edit', array('id' => $slideritem_id));
 						return;
@@ -224,28 +224,28 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 					return;
 				}
 			}
-			
+
 
         }
-        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('slider')->__('Unable to find slider item to save'));
+        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('slider')->__('Unable to find Slider Item to save'));
         $this->_redirect('*/*/');
 	}
- 
+
 	public function deleteAction() {
 		if( $this->getRequest()->getParam('id') > 0 ) {
 			try {
 				$id = $this->getRequest()->getParam('id');
 				$model = Mage::getModel('slider/slider_items');
 				$model->load( $id );
-				$image = $model->getData() ; 
+				$image = $model->getData() ;
 				if( !empty( $image['slider_image_path'] )){
 					$path = Mage::getBaseDir(Mage_Core_Model_Store::URL_TYPE_MEDIA) ;
 				    if(file_exists($path . $image['slider_image_path'])) unlink( $path . $image['slider_image_path'] );
 				}
 				$model->setId( $id )
 					->delete();
-					 
-				Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Slider item was successfully deleted'));
+
+				Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Slide Item was successfully deleted'));
 				$this->_redirect('*/*/');
 			} catch (Exception $e) {
 				Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
@@ -254,7 +254,7 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 		}
 		$this->_redirect('*/*/');
 	}
-	
+
     public function massDeleteAction() {
         $slitemIds = $this->getRequest()->getParam('slideritem');
         if(!is_array($slitemIds)) {
@@ -276,7 +276,7 @@ class Stepzero_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
         }
         $this->_redirect('*/*/index');
     }
-	
+
     public function massStatusAction()
     {
         $sliderIds = $this->getRequest()->getParam('slideritem');
