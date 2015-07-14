@@ -17,17 +17,17 @@
  * @license     http://www.stepzero.solutions/magento/licenses/Stepzero_Slider
  *
  * Installation... place the following string:
- * {{block type="slider/slider" slider_id="1" slider_name="generic-carousel" template="stepzero/slider/slider.phtml" name="slider" as="slider" }}
+ * {{block type="slider/slider" carousel_id="1" carousel_name="generic-carousel" template="stepzero/slider/slider.phtml" name="slider" as="slider" }}
  * ...in your CMS page
  */
 ?>
 <?php
-	$sliderID = $this->getData('slider_id');
-	$sliderName = $this->getData('slider_name');
-	$slidercontent = $this->getLoadedSliderImages( $sliderID, $sliderName );
+	$carouselID = $this->getData('carousel_id');
+	$carouselName = $this->getData('carousel_name');
+	$carouselContent = $this->getLoadedSliderImages( $carouselID, $carouselName );
 ?>
-<?php if( !empty($slidercontent) ){ ?>
-	<section id="<?php echo $sliderName; ?>" class="carousel-slider">
-		<?php echo $slidercontent; ?>
+<?php if( !empty($carouselContent) ){ ?>
+	<section id="<?php echo $carouselName; ?>" class="carousel-slider">
+		<?php echo $carouselContent; ?>
 	</section>
 <?php } ?>

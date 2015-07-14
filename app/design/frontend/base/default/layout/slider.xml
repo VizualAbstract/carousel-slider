@@ -22,12 +22,12 @@
 	<cms_index_index>
 		<reference name="slidercontent">
 			<block type="slider/slider" name="slider" template="stepzero/slider/slider.phtml" as="slider">
-				<action method="setData"><name>slider_id</name><value>1</value></action>
-				<action method="setData"><name>slider_name</name><value>carousel-generic</value></action>
+				<action method="setData"><name>carousel_id</name><value>1</value></action>
+				<action method="setData"><name>carousel_name</name><value>carousel-generic</value></action>
 			</block>
 		</reference>
 		<reference name="footer_js">
-			<action method="addItem"><type>skin_js</type><name>js/szero-slider.js</name></action>
+			<!-- <action method="addItem"><type>skin_js</type><name>js/szero-slider.js</name></action> -->
 		</reference>
 	</cms_index_index>
 </layout>
