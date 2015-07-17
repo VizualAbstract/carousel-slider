@@ -2,9 +2,14 @@ Modman compatible "Carousel-Slider"
 =============
 This is a simple, but flexible carousel slider for Magento. Based on [MagentoSlider](https://github.com/stepzerosolutions/MagentoSlider) by [stepzerosolutions](https://github.com/stepzerosolutions), modernized and made into a modman extension, simplyfing its installation and removal.
 
+![Carousel-Sliders contextual menu](http://host.coreycapetillo.com/git/media/carousel-slider-carousels-grid.png)
+![Carousel-Sliders contextual menu](http://host.coreycapetillo.com/git/media/carousel-slider-slides-grid.png)
+
 ## Overview
 
 Carousel-Slider will add a contextual menu to your Magento installation called Carousel Slider (found under CMS > Carousel Slider).
+
+![Carousel-Sliders contextual menu](http://host.coreycapetillo.com/git/media/carousel-slider-contextual-menu.png)
 
 From here you'll be able to create **Carousels** and **Slides**. Carousels are embeddable into content blocks and house individual slides. Slides have a number of options and fields, including caption blocks and links.
 

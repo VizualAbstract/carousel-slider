@@ -32,10 +32,18 @@ class Carousel_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Image extends Mage_Ad
         }
 
 		$collection = Mage::getModel('slider/slider_items')->getCollection()
-						->addFieldToSelect( array( 'slider_image_path' ) )
-						->addFieldToFilter('slideritem_id', Mage::registry('slideritems_data')->getSlideritem_id() );
+                        ->addFieldToSelect( array( 'slider_image_path' ) )
+                        ->addFieldToFilter('slideritem_id', Mage::registry('slideritems_data')->getSlideritem_id() );
         $imagedata = $collection->getData();
-        $this->assign('sliderimage', $imagedata[0]);
+
+        # $this->assign('sliderimage', $imagedata[0]);
+
+        # echo 'SHIT';
+
+        # if (isset($imagedata[0]) && $imagedata[0] != NULL){
+            $this->assign('sliderimage', $imagedata[0]);
+        # }
+
         return parent::_toHtml();
     }
 

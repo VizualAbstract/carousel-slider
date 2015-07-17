@@ -21,8 +21,8 @@ class Carousel_Slider_Block_Adminhtml_Slideritems extends Mage_Adminhtml_Block_W
 	public function __construct(){
 		$this->_controller = 'adminhtml_slideritems';
 		$this->_blockGroup = 'slider';
-		$this->_headerText = Mage::helper('slider')->__('Slider Items Manager');
-		$this->_addButtonLabel = Mage::helper('slider')->__('Add Slider Item');
+		$this->_headerText = Mage::helper('slider')->__('Slide Manager');
+		$this->_addButtonLabel = Mage::helper('slider')->__('Add Slide');
 		parent::__construct();
 	}
 

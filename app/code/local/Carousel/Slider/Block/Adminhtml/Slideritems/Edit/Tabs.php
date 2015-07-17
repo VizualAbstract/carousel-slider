@@ -23,14 +23,14 @@ class Carousel_Slider_Block_Adminhtml_Slideritems_Edit_Tabs extends Mage_Adminht
       parent::__construct();
       $this->setId('slider_tabs');
       $this->setDestElementId('edit_form');
-      $this->setTitle(Mage::helper('slider')->__('Slider Items'));
+      $this->setTitle(Mage::helper('slider')->__('Slide'));
   }
 
   protected function _beforeToHtml()
   {
       $this->addTab('form_section', array(
-          'label'     => Mage::helper('slider')->__('Slider Item Information'),
-          'title'     => Mage::helper('slider')->__('Slider Item Information'),
+          'label'     => Mage::helper('slider')->__('Slide Information'),
+          'title'     => Mage::helper('slider')->__('Slide Information'),
           'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_form')->toHtml(),
       ));
       // $this->addTab('form_links', array(
@@ -44,8 +44,8 @@ class Carousel_Slider_Block_Adminhtml_Slideritems_Edit_Tabs extends Mage_Adminht
       //     'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_manual')->toHtml(),
       // ));
       $this->addTab('form_image', array(
-          'label'     => Mage::helper('slider')->__('Slider Image'),
-          'title'     => Mage::helper('slider')->__('Slider Image'),
+          'label'     => Mage::helper('slider')->__('Slide Image'),
+          'title'     => Mage::helper('slider')->__('Slide Image'),
           'content'   => $this->getLayout()->createBlock('slider/adminhtml_slideritems_edit_tab_image')->toHtml(),
       ));
 

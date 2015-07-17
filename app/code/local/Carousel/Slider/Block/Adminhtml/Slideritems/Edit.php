@@ -63,9 +63,9 @@ class Carousel_Slider_Block_Adminhtml_Slideritems_Edit extends Mage_Adminhtml_Bl
     {
         if (Mage::registry('slideritems_data') && Mage::registry('slideritems_data')->getSlideritem_id())
         {
-            return Mage::helper('slider')->__('Edit Slider Item"%s"', $this->htmlEscape(Mage::registry('slideritems_data')->getSlideritem_id()));
+            return Mage::helper('slider')->__('Edit Slide "%s"', $this->htmlEscape(Mage::registry('slideritems_data')->getSlideritem_title()));
         } else {
-            return Mage::helper('slider')->__('New Slider Item');
+            return Mage::helper('slider')->__('New Slide');
         }
     }
 
