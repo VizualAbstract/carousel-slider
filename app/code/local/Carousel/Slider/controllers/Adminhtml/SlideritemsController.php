@@ -20,7 +20,7 @@ class Carousel_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 	protected function _initAction() {
 		$this->loadLayout()
 			->_setActiveMenu('cms')
-			->_addBreadcrumb(Mage::helper('adminhtml')->__('Slide Item Manager'), Mage::helper('adminhtml')->__('Slide Item Manager'));
+			->_addBreadcrumb(Mage::helper('adminhtml')->__('Slide Manager'), Mage::helper('adminhtml')->__('Slide Manager'));
 
 		return $this;
 	}
@@ -146,8 +146,10 @@ class Carousel_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 					}
 					if( !empty($imgurl) ) {
 						$data['slider_image_path']=$imgurl;
-					} else {
+					} elseif( isset($data['slideritem_image_manual']) ) {
 						$data['slider_image_path']=$data['slideritem_image_manual'];
+					} else {
+						$data['slider_image_path']=NULL;
 					}
 
 					if( isset($data['stores']) ) {
@@ -164,11 +166,15 @@ class Carousel_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 					$model->save();
 					$slideritem_id = $model->getSlideritem_id();
 					$delete_links = $this->getRequest()->getParam('delete');
-					foreach($delete_links as $key => $value ){
-						$collection = Mage::getModel('slider/slider_links');
-						$collection->load( $value );
-						$collection->setId($value)
-						->delete();
+					if ($delete_links){
+						foreach($delete_links as $key => $value ){
+							if($value){
+								$collection = Mage::getModel('slider/slider_links');
+								$collection->load( $value );
+								$collection->setId($value)
+								->delete();
+							}
+						}
 					}
 					$slider_links = $this->getRequest()->getParam('linkcontent');
 					if($slider_links){
@@ -204,7 +210,7 @@ class Carousel_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 						}
 					}
 
-					Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('slider')->__('Slide Item was successfully saved'));
+					Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('slider')->__('Slide was successfully saved'));
 					Mage::getSingleton('adminhtml/session')->setFormData(false);
 
 					if ($this->getRequest()->getParam('back')) {
@@ -245,7 +251,7 @@ class Carousel_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 				$model->setId( $id )
 					->delete();
 
-				Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Slide Item was successfully deleted'));
+				Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Slide was successfully deleted'));
 				$this->_redirect('*/*/');
 			} catch (Exception $e) {
 				Mage::getSingleton('adminhtml/session')->addError($e->getMessage());

@@ -36,13 +36,11 @@ class Carousel_Slider_Block_Adminhtml_Slideritems_Edit_Tab_Image extends Mage_Ad
                         ->addFieldToFilter('slideritem_id', Mage::registry('slideritems_data')->getSlideritem_id() );
         $imagedata = $collection->getData();
 
-        # $this->assign('sliderimage', $imagedata[0]);
-
-        # echo 'SHIT';
-
-        # if (isset($imagedata[0]) && $imagedata[0] != NULL){
-            $this->assign('sliderimage', $imagedata[0]);
-        # }
+        if ( isset($imagedata[0]) ){
+            if ( $imagedata[0] != NULL ){
+                $this->assign('sliderimage', $imagedata[0]);
+            }
+        }
 
         return parent::_toHtml();
     }

@@ -18,7 +18,7 @@
  */
 ?>
 <div id="newlink_container">
-	<?php if( !$sliderimage ): ?>
+	<?php if( !isset($sliderimage) ): ?>
 		<?php echo Mage::helper('slider')->__('No Image found') ?>
 	<?php else: ?>
 	    <div class="entry-edit-head">
@@ -30,7 +30,7 @@
 	      <p><strong><?php echo Mage_Core_Model_Store::URL_TYPE_MEDIA?><?php echo $sliderimage["slider_image_path"]?></strong></p>
 	      <?php } ?>
 	    </div>
-	<?php endif;?>
+	<?php endif; ?>
 </div>
 
 
