@@ -125,15 +125,15 @@ class Carousel_Slider_Adminhtml_SlideritemsController extends Mage_Adminhtml_Con
 
 					// We set media as the upload dir
 					$path = Mage::getBaseDir(Mage_Core_Model_Store::URL_TYPE_MEDIA) . DS . 'slider' . DS;
-					$result = $uploader->save($path , $_FILES['filename']['name'] );
+                    $result = $uploader->save($path , $_FILES['filename']['name']);
 					//Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)
-					$imgurl  = '/slider/'. $_FILES['filename']['name'];
+                    $imgurl  = '/slider/'.$uploader->getUploadedFileName();
 
 				} catch (Exception $e) {
 		      		Mage::getSingleton('adminhtml/session')->addError(Mage::helper('web')->__('Image file is not uploaded. '. $e));
 		        }
 		        //this way the name is saved in DB
-	  			$data['filename'] = $_FILES['filename']['name'];
+				$data['filename'] = $uploader->getUploadedFileName();
 			}
 
 			if( $data = $this->getRequest()->getPost() ){
